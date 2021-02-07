@@ -14,11 +14,11 @@ let errorButton =document.getElementById("error-button");
 
 
 //fuction for dropdown menu
-dropDownMenu.addEventListener("focus",()=>{
+dropDownMenu.addEventListener("click",(e)=>{
     showHideNavbar("block");
 },true);
 
-dropDownMenu.addEventListener("blur",()=>{
+dropDownMenu.addEventListener("blur",(e)=>{
     showHideNavbar("none");
 },true);
 
