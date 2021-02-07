@@ -15,6 +15,8 @@
     <title>Hungry Burger</title>
 </head>
 <body>
+
+    <!-------------- header section ----------------------->
     <header>
         <section id="header-section">
             <div id="header-div">
@@ -24,37 +26,43 @@
                 </div>
                 <div id="navigation-div">
                     <ul id="nav-ul">
-                        <li><a href="#news">News</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a class="active" href="#home">Home</a></li>
+                        <li id="dropdown-menu"><a href="#menu"><strong>Menu</strong></a></li>
+                        <li class="nav-li"><a href="#news">News</a></li>
+                        <li class="nav-li"><a href="#contact">Contact</a></li>
+                        <li class="nav-li"><a href="#about">About</a></li>
+                        <li class="nav-li"><a class="active" href="#home">Home</a></li>
+                        
                     </ul>
                 </div>
             </div>
         </section>
     </header>
+    <!-------------- main section ----------------------->
     <main>
+        <!-------------- search section ----------------------->
         <section id="search-section">
             <div id="search-div">
                 <input id="search-input" type="text" placeholder=" &#xf002  Search for Meal" >
                 <button id="search-button">Search</button>
             </div>
+            <!-------------- error alert div----------------------->
             <div id="error-alert-div">
                 <img src="images/sad1.png" alt="">
-                <h2 id="error-meggase">Sorry,We can't find this recipe.Please try again with different recipe name.</h2>
+                <h2 id="error-meggase">Sorry!!! I can't find this meal.Please try again with something else.</h2>
                 <button id="error-button">Ok</button>
             </div>
         </section>
+        <!-------------- recipe and ingredients section ----------------------->
         <section id="recipe-section">
             <div id="recipe-div">
                 <img id="recipe-image"src="" alt="">
                 <h2 id="recipe-name"></h2>
                 <h3 id="ingredients"></h3>
                 <ul id="ingredient-list"> 
-
                 </ul>
             </div>
         </section>
+        <!-------------- filtered menu section ----------------------->
         <section id="menu-section">
             <div id="all-menues">
             </div>

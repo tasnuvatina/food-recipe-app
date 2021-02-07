@@ -1,5 +1,6 @@
 
 //getting html elements in variables
+let dropDownMenu =document.getElementById("dropdown-menu");
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const allMenues =  document.getElementById("all-menues");
@@ -12,6 +13,21 @@ let errorAlertDiv =document.getElementById("error-alert-div");
 let errorButton =document.getElementById("error-button");
 
 
+//fuction for dropdown menu
+dropDownMenu.addEventListener("focus",()=>{
+    showHideNavbar("block");
+},true);
+
+dropDownMenu.addEventListener("blur",()=>{
+    showHideNavbar("none");
+},true);
+
+let showHideNavbar =(displayProperty)=>{
+    let navLi = document.getElementsByClassName("nav-li");
+    for (const li of navLi) {
+        li.style.display=displayProperty;
+    }
+}
 
 //adding event handler to search menu by name
 searchButton.addEventListener("click",()=>{

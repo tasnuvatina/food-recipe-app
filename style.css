@@ -50,6 +50,9 @@ section{
   #nav-ul li a:hover {
     background-color: #d4d4d3;
   }
+#dropdown-menu{
+    display: none;
+}
 
 
 /*************************search section style****************************/
@@ -112,11 +115,14 @@ section{
 /*********************** menu section style***********************/
 
 #all-menues{
+    align-items: center;
     display:grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap:25px;
+    margin: 0 auto;
 }
 .one-menu{
+    justify-self: center;
     width:270px;
     height: auto;
     border: 2px solid white;
@@ -130,6 +136,43 @@ section{
 }
 .name-menu {
     text-align: center;
+}
+
+
+/***************************media queries ***************************************/
+@media  (max-width: 1350px) and (min-width: 1050px) {
+    #all-menues{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+}
+
+@media  (max-width: 1050px) {
+    #all-menues{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+@media  (max-width: 750px) {
+    #header-section{
+        align-items: flex-start;
+    }
+    #nav-ul{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .nav-li{
+       display: none;
+    }
+    #dropdown-menu{
+        display: block;
+    }
+    #all-menues{
+        grid-template-columns: repeat(1,1fr);
+    }
+    #recipe-image{
+        width:100%;
+    }
 }
 
 
