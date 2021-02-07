@@ -35,3 +35,20 @@ body{
 .name-menu {
     text-align: center;
 }
+
+/******************recipe section style****************************/
+#recipe-section {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+
+#recipe-div{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+#recipe-image {
+    width:30rem;
+    border-radius: 10px;
+}
