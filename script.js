@@ -1,7 +1,7 @@
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const allMenues =  document.getElementById("all-menues");
-const ul = document.getElementById("ingredien-list");
+const ul = document.getElementById("ingredient-list");
 let recipeImage = document.getElementById("recipe-image");
 let recipeName = document.getElementById("recipe-name");
 let ingredients = document.getElementById("ingredients");
@@ -14,7 +14,7 @@ searchButton.addEventListener("click",()=>{
     getMenu(foodName);
 })
 
-//function to  get food name and imafe from api 
+//function to  get food name and image from api 
 let getMenu= foodName=>{
     // console.log(foodName);
     let menuLink=`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`
@@ -83,7 +83,8 @@ let getIngredientList= data =>{
                  if ( eachIngredient!=="undefined undefined" && eachIngredient!==null) {
                     //  console.log(eachIngredient);
                      let li=document.createElement("li");
-                     li.innerHTML=eachIngredient;
+                     li.style.listStyle="none";
+                     li.innerHTML=`<i class="fas fa-check-square"></i> ${eachIngredient}`;
                      
                      ul.appendChild(li);
                 }
