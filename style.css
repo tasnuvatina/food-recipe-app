@@ -65,12 +65,26 @@ section{
     border-radius: 6px 0 0 6px;
     border-width: 0;
 }
-#search-button{
+#search-button ,#error-button{
     padding:15px 30px;
     background: #F06C4E;
     border-radius: 0px 6px 6px 0px;
     border-width: 0;
     color:#FFFFFF
+}
+
+/****************************error alert div style**********************************/
+#error-alert-div{
+    display: none;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+#error-message {
+    margin-block-start: 0;
+}
+#error-button {
+    border-radius: 6px;
 }
 
 /******************recipe section style****************************/

@@ -5,10 +5,14 @@ const ul = document.getElementById("ingredient-list");
 let recipeImage = document.getElementById("recipe-image");
 let recipeName = document.getElementById("recipe-name");
 let ingredients = document.getElementById("ingredients");
+let errorAlertDiv =document.getElementById("error-alert-div");
+let errorButton =document.getElementById("error-button");
+
 
 
 //adding event handler to search menu by name
 searchButton.addEventListener("click",()=>{
+    errorAlertDiv.style.display="none";
     allMenues.innerHTML="";
     let foodName = searchInput.value;
     getMenu(foodName);
@@ -28,36 +32,47 @@ let getMenu= foodName=>{
 //function to show all matched items in menu 
 let showMenu= data =>{
     let menuItems =data.meals;
-    menuItems.forEach(item => {
-        // console.log(item.strIngredient1 );
-        // console.log(item);
-        // let bbb= strIngredient1+
-        let mealName= item.strMeal;
-        let menuImage =item.strMealThumb;
-        let oneMenu=document.createElement("div");
-        oneMenu.className="one-menu";
-        var singleMenu=`<div class="image-menu-div">
-                            <img class="image-menu" src="${menuImage}" alt="">
-                        </div>
-                        <div class="name-menu-div">
-                            <h3 class="name-menu">${mealName}</h3>
-                        </div>`
 
-        oneMenu.innerHTML=singleMenu;
-        allMenues.appendChild(oneMenu);
+    try {
+        menuItems.forEach(item => {
+            // console.log(item.strIngredient1 );
+            // console.log(item);
+            // let bbb= strIngredient1+
 
-        //adding evend handler on specific menu to see the ingredients
-        oneMenu.addEventListener("click",function(e){
-            ul.innerHTML="";
-            let menuLink=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
-            fetch(menuLink)
-            .then(responce=>responce.json())
-            .then(data=>{
-                getImageAndHeader(data);
-                getIngredientList(data);
-            })
-        })                 
-    });      
+            let mealName= item.strMeal;
+            let menuImage =item.strMealThumb;
+            let oneMenu=document.createElement("div");
+            oneMenu.className="one-menu";
+            var singleMenu=`<div class="image-menu-div">
+                                <img class="image-menu" src="${menuImage}" alt="">
+                            </div>
+                            <div class="name-menu-div">
+                                <h3 class="name-menu">${mealName}</h3>
+                            </div>`
+    
+            oneMenu.innerHTML=singleMenu;
+            allMenues.appendChild(oneMenu);
+    
+            //adding evend handler on specific menu to see the ingredients
+            oneMenu.addEventListener("click",function(e){
+                ul.innerHTML="";
+                let menuLink=`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${item.idMeal}`
+                fetch(menuLink)
+                .then(responce=>responce.json())
+                .then(data=>{
+                    getImageAndHeader(data);
+                    getIngredientList(data);
+                })
+            })                 
+        });  
+    } catch (error) {
+        errorAlertDiv.style.display="block";
+        errorButton.addEventListener("click",(e)=>{
+            errorAlertDiv.style.display="none";
+            searchInput.value="";
+        })
+        
+    }    
 }
 
 //function to get image and header for specific(clicked) recipe
@@ -84,7 +99,7 @@ let getIngredientList= data =>{
                     //  console.log(eachIngredient);
                      let li=document.createElement("li");
                      li.style.listStyle="none";
-                     li.innerHTML=`<i class="fas fa-check-square"></i> ${eachIngredient}`;
+                     li.innerHTML=`<i class="fas fa-check-square"></i>  ${eachIngredient}`;
                      
                      ul.appendChild(li);
                 }
