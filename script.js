@@ -1,6 +1,9 @@
+
+//getting html elements in variables
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const allMenues =  document.getElementById("all-menues");
+const recipeSection =document.getElementById("recipe-section");
 const ul = document.getElementById("ingredient-list");
 let recipeImage = document.getElementById("recipe-image");
 let recipeName = document.getElementById("recipe-name");
@@ -14,13 +17,17 @@ let errorButton =document.getElementById("error-button");
 searchButton.addEventListener("click",()=>{
     errorAlertDiv.style.display="none";
     allMenues.innerHTML="";
+    recipeSection.style.display="none";
     let foodName = searchInput.value;
-    getMenu(foodName);
+    if (foodName==="") {
+        generateErrorMessage();
+    } else {
+        getMenu(foodName);
+    }
 })
 
 //function to  get food name and image from api 
 let getMenu= foodName=>{
-    // console.log(foodName);
     let menuLink=`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`
     fetch(menuLink)
     .then(responce=>responce.json())
@@ -32,13 +39,8 @@ let getMenu= foodName=>{
 //function to show all matched items in menu 
 let showMenu= data =>{
     let menuItems =data.meals;
-
     try {
         menuItems.forEach(item => {
-            // console.log(item.strIngredient1 );
-            // console.log(item);
-            // let bbb= strIngredient1+
-
             let mealName= item.strMeal;
             let menuImage =item.strMealThumb;
             let oneMenu=document.createElement("div");
@@ -62,16 +64,12 @@ let showMenu= data =>{
                 .then(data=>{
                     getImageAndHeader(data);
                     getIngredientList(data);
+                    recipeSection.style.display="grid"
                 })
             })                 
         });  
     } catch (error) {
-        errorAlertDiv.style.display="block";
-        errorButton.addEventListener("click",(e)=>{
-            errorAlertDiv.style.display="none";
-            searchInput.value="";
-        })
-        
+        generateErrorMessage();
     }    
 }
 
@@ -86,8 +84,6 @@ let getImageAndHeader=data =>{
 //function to get ingredients of specific(clicked) recipe and make a list
 let getIngredientList= data =>{
     let mealObject = data.meals[0];
-        // console.log(mealObject);
-
         let size = Object.keys(mealObject).length;
         for (let i = 1; i < size; i++) {
             let index=i+"";
@@ -96,14 +92,20 @@ let getIngredientList= data =>{
             let eachIngredient=`${mealObject[newMeasure]} ${mealObject[newIngredient]}`;
             if(mealObject[newMeasure]!==""&& mealObject[newIngredient]!==""){
                  if ( eachIngredient!=="undefined undefined" && eachIngredient!==null) {
-                    //  console.log(eachIngredient);
                      let li=document.createElement("li");
                      li.style.listStyle="none";
                      li.innerHTML=`<i class="fas fa-check-square"></i>  ${eachIngredient}`;
-                     
                      ul.appendChild(li);
                 }
             }
-
         }
+}
+
+//function to generate error message
+let generateErrorMessage =()=>{
+    errorAlertDiv.style.display="block";
+    errorButton.addEventListener("click",(e)=>{
+        errorAlertDiv.style.display="none";
+        searchInput.value="";
+    })
 }
