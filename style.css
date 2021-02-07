@@ -2,8 +2,29 @@ body{
     margin:0;
     padding:0 5rem;
 }
+section{
+    margin:20px 0px;
+}
+
+#search-div{
+    display: flex;
+    justify-content: center;
+}
+#search-input{
+    padding:15px 30px;
+    background: #d4d4d3;
+    border-radius: 6px 0 0 6px;
+    border-width: 0;
+}
+#search-button{
+    padding:15px 30px;
+    background: #F06C4E;
+    border-radius: 0px 6px 6px 0px;
+    border-width: 0;
+    color:#FFFFFF
 
 
+}
 /*********************** menu section style***********************/
 #menu-section {
     /* padding:0 5rem; */
@@ -22,7 +43,7 @@ body{
     height: auto;
     border: 2px solid white;
     border-radius: 10px;
-    background-color: green;
+    background: #d4d4d3;
 }
 
 .image-menu{
