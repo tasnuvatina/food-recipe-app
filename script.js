@@ -51,8 +51,8 @@ let showMenu= data =>{
                             <div class="name-menu-div">
                                 <h3 class="name-menu">${mealName}</h3>
                             </div>`
-    
             oneMenu.innerHTML=singleMenu;
+            
             allMenues.appendChild(oneMenu);
     
             //adding evend handler on specific menu to see the ingredients
@@ -64,6 +64,7 @@ let showMenu= data =>{
                 .then(data=>{
                     getImageAndHeader(data);
                     getIngredientList(data);
+                    scrolltop();
                     recipeSection.style.display="grid"
                 })
             })                 
@@ -108,4 +109,13 @@ let generateErrorMessage =()=>{
         errorAlertDiv.style.display="none";
         searchInput.value="";
     })
+}
+
+//function to scroll at the recipe section to see the ingredients of each recipe
+let scrolltop=()=>{
+    window.scroll({
+        top: 70, 
+        left: 0, 
+        behavior: 'smooth' 
+       });
 }

@@ -33,7 +33,6 @@ section{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    /* background-color: #333; */
   }
   
   #nav-ul li {
@@ -93,18 +92,16 @@ section{
     grid-template-columns: repeat(1,1fr);
     padding:10px 0;
 }
-
 #recipe-div{
     display: flex;
     flex-direction: column;
     justify-self: center;
 }
-
 #recipe-image {
+    align-self: center;
     width:30rem;
     border-radius: 10px;
 }
-
 #ingredient-list {
     padding-inline-start: 0;
 }
@@ -113,33 +110,24 @@ section{
 }
 
 /*********************** menu section style***********************/
-#menu-section {
-    /* padding:0 5rem; */
-}
+
 #all-menues{
-    /* align-items: center; */
     display:grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap:25px;
 }
-
 .one-menu{
-    /* align-self: center; */
     width:270px;
-    /* height:300px; */
     height: auto;
     border: 2px solid white;
     border-radius: 10px;
     background: #d4d4d3;
 }
-
 .image-menu{
     width: 100%;
     height: 226px;
     border-radius: 10px 10px 0px 0px;
-    
 }
-
 .name-menu {
     text-align: center;
 }
